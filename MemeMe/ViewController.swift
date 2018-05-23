@@ -18,9 +18,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     
-    //Delegates
-    let topTextFieldDelegate = TopTextFieldDelegate()
-    let bottomTextFieldDelegate = BottomTextFieldDelegate()
+    //Delegate
+    let textFieldDelegate = TextFieldDelegate()
+    
     
     //Attributes of text in text fields
     let memeTextAttributes:[String: Any] = [
@@ -38,6 +38,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        topTextField.textAlignment = .center
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,11 +56,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         shareButton.isEnabled = imagePickerView.image != nil
         
         //Assigning delegates and text attributes
-        topTextField.delegate = topTextFieldDelegate
-        topTextField.defaultTextAttributes = memeTextAttributes
+        self.textFieldAttributes(topTextField)
+        self.textFieldAttributes(bottomTextField)
         
-        bottomTextField.delegate = bottomTextFieldDelegate
-        bottomTextField.defaultTextAttributes = memeTextAttributes
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,18 +69,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     //Picking image from Album
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.sourceType = .photoLibrary
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
+        self.presentImagePickerController(.photoLibrary)
     }
   
     //Capturing a picture from Camera
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.sourceType = .camera
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
+        self.presentImagePickerController(.camera)
     }
     
     //Generating Meme Image by taking screenshot
@@ -103,20 +100,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Saving generated meme image
     func saveMeme(_ memedImage: UIImage) {
         let memeImage = MemedImage(imageTopText: topTextField.text!, imageBottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
-        
-        let imageName = memeImage.imageTopText
-        
-        //create an instance of the FileManager
-        let fileManager = FileManager.default
-        //get the image path
-        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
-        
-        //get the PNG data for this image
-        let data = UIImagePNGRepresentation(memeImage.memedImage)
-        
-        //store it in the document directory
-        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
-    }
+        }
     
     
     
@@ -125,11 +109,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            if !completed { // User canceled
-                return
-            }else{  // User completed activity
+            if completed {
                 self.saveMeme(memedImage)
-                return
             }
         }
         present(controller, animated: true, completion: nil)
@@ -157,6 +138,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    //Assigning attributes to text fields
+    func textFieldAttributes(_ textField: UITextField){
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.delegate = textFieldDelegate
+        
+    }
+    
+    //Presenting controller to capture Image or open Album
+    func presentImagePickerController(_ sourceType: UIImagePickerControllerSourceType){
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = sourceType
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     
     //Adjusting y axis to show bottom text field alongwith keyboad
     @objc func keyboardWillShow(_ notification:Notification) {
@@ -189,5 +186,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
+    
+    
 }
 

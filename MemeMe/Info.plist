@@ -44,8 +44,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Take photo for meme</string>
+	<string>Taking photo for a meme</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Get photo for meme</string>
+	<string>Picture for meme</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Picture for meme</string>
 </dict>
 </plist>

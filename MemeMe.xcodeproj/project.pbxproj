@@ -12,8 +12,7 @@
 		B1AA72B220B16A3500FB9773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AA72B020B16A3500FB9773 /* Main.storyboard */; };
 		B1AA72B420B16A3700FB9773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1AA72B320B16A3700FB9773 /* Assets.xcassets */; };
 		B1AA72B720B16A3700FB9773 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AA72B520B16A3700FB9773 /* LaunchScreen.storyboard */; };
-		B1AA72C520B18CB400FB9773 /* TopTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA72C420B18CB400FB9773 /* TopTextFieldDelegate.swift */; };
-		B1AA72C720B18CC800FB9773 /* BottomTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA72C620B18CC800FB9773 /* BottomTextFieldDelegate.swift */; };
+		B1AA72C520B18CB400FB9773 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA72C420B18CB400FB9773 /* TextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +23,7 @@
 		B1AA72B320B16A3700FB9773 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1AA72B620B16A3700FB9773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1AA72B820B16A3700FB9773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1AA72C420B18CB400FB9773 /* TopTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextFieldDelegate.swift; sourceTree = "<group>"; };
-		B1AA72C620B18CC800FB9773 /* BottomTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTextFieldDelegate.swift; sourceTree = "<group>"; };
+		B1AA72C420B18CB400FB9773 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +70,7 @@
 		B1AA72C320B18C9E00FB9773 /* Text Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				B1AA72C420B18CB400FB9773 /* TopTextFieldDelegate.swift */,
-				B1AA72C620B18CC800FB9773 /* BottomTextFieldDelegate.swift */,
+				B1AA72C420B18CB400FB9773 /* TextFieldDelegate.swift */,
 			);
 			path = "Text Delegates";
 			sourceTree = "<group>";
@@ -150,8 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1AA72AF20B16A3500FB9773 /* ViewController.swift in Sources */,
-				B1AA72C720B18CC800FB9773 /* BottomTextFieldDelegate.swift in Sources */,
-				B1AA72C520B18CB400FB9773 /* TopTextFieldDelegate.swift in Sources */,
+				B1AA72C520B18CB400FB9773 /* TextFieldDelegate.swift in Sources */,
 				B1AA72AD20B16A3500FB9773 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

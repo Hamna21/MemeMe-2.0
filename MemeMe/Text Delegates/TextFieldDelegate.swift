@@ -1,5 +1,5 @@
 //
-//  TopTextDelegate.swift
+//  TextFieldDelegate.swift
 //  MemeMe
 //
 //  Created by Hamna Usmani on 5/20/18.
@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class TopTextFieldDelegate: NSObject, UITextFieldDelegate {
+class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if(textField.text == "TOP"){
+        if(textField.text == "TOP" || textField.text == "BOTTOM"){
             textField.text = ""
         }
     }
