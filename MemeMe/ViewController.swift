@@ -44,14 +44,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        // Define paragraph style - you got to pass it along to NSAttributedString constructor
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        
-        memeTextAttributes[NSAttributedStringKey.paragraphStyle.rawValue] = paragraphStyle
-        
-
         super.viewWillAppear(animated)
         
         //Subscribing to keyboard notifications
@@ -62,6 +54,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Enabling share button only when image is selected
         shareButton.isEnabled = imagePickerView.image != nil
+        
+        // Paragrap Style - Text alignment center contraint
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        memeTextAttributes[NSAttributedStringKey.paragraphStyle.rawValue] = paragraphStyle
         
         //Assigning delegates and text attributes
         self.textFieldAttributes(topTextField)
