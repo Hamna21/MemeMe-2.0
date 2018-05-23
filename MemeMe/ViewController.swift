@@ -21,13 +21,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Delegate
     let textFieldDelegate = TextFieldDelegate()
     
-    
+
     //Attributes of text in text fields
-    let memeTextAttributes:[String: Any] = [
+    var memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3]
+
 
     //Properties of MemedImage
     struct MemedImage {
@@ -40,10 +41,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        // Define paragraph style - you got to pass it along to NSAttributedString constructor
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        memeTextAttributes[NSAttributedStringKey.paragraphStyle.rawValue] = paragraphStyle
+        
+
         super.viewWillAppear(animated)
         
         //Subscribing to keyboard notifications
@@ -58,7 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Assigning delegates and text attributes
         self.textFieldAttributes(topTextField)
         self.textFieldAttributes(bottomTextField)
-        
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
