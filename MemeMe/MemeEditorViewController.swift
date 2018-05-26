@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Hamna Usmani on 5/20/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     //Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -29,15 +29,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3]
 
-
-    //Properties of MemedImage
-    struct MemedImage {
-        let imageTopText: String
-        let imageBottomText: String
-        let image: UIImage
-        let memedImage: UIImage
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,11 +92,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
         
     }
+  
+    
     
     //Saving generated meme image
     func saveMeme(_ memedImage: UIImage) {
-        let memeImage = MemedImage(imageTopText: topTextField.text!, imageBottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
-        }
+        let meme = Meme(imageTopText: topTextField.text!, imageBottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
+        
+        //Add it to memes Array in AppDelegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        
+        let sentMemesVC = self.storyboard?.instantiateViewController(withIdentifier: "SentMemesTableViewController") as! UITabBarController
+        self.present(sentMemesVC, animated: true, completion: nil)
+        
+       
+    }
     
     
     
@@ -117,6 +120,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if completed {
                 self.saveMeme(memedImage)
             }
+           
+          
         }
         present(controller, animated: true, completion: nil)
     }
@@ -127,6 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerView.image = nil
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+
     }
     
     
