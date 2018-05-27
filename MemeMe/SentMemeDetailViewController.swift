@@ -14,14 +14,15 @@ class SentMemeDetailViewController: UIViewController {
 
     @IBOutlet weak var memeImageView: UIImageView!
     
-    override func viewDidLoad() {
-        print("---LOADED-----")
-        super.viewDidLoad()
-    }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = true
         self.memeImageView!.image = meme.memedImage
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }

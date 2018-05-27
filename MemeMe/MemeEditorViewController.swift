@@ -35,7 +35,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
         
         //Subscribing to keyboard notifications
         subscribeToKeyboardNotifications()
@@ -95,7 +95,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
   
     
     
-    //Saving generated meme image
+    //Saving generated meme image and returning to sent memes table
     func saveMeme(_ memedImage: UIImage) {
         let meme = Meme(imageTopText: topTextField.text!, imageBottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
         
@@ -103,11 +103,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        
-        let sentMemesVC = self.storyboard?.instantiateViewController(withIdentifier: "SentMemesTableViewController") as! UITabBarController
-        self.present(sentMemesVC, animated: true, completion: nil)
-        
-       
     }
     
     
@@ -119,20 +114,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if completed {
                 self.saveMeme(memedImage)
+                self.dismiss(animated: true, completion: nil)
             }
-           
-          
-        }
+           }
         present(controller, animated: true, completion: nil)
     }
     
     
-    //Clearing image and text fields when Cancel called
+    //Returning to table/collection view
     @IBAction func cancelMeme(_ sender: Any) {
-        imagePickerView.image = nil
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-
+        self.dismiss(animated: true, completion: nil)
     }
     
     
