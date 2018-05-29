@@ -25,6 +25,8 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    
         //Opening Memes Editor if Memes Array is empty
         if(memes.isEmpty){
             self.openMemeEditor()
@@ -52,8 +54,10 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell")!
         let meme = memes[indexPath.row]
         
-        cell.imageView?.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        //Adding space between cells
+        cell.layer.borderWidth = CGFloat(5.0)
+        cell.layer.borderColor = tableView.backgroundColor?.cgColor
+
         cell.textLabel?.textAlignment = .right
         
         cell.imageView?.image = meme.memedImage

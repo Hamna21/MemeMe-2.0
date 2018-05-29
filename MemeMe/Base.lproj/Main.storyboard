@@ -55,25 +55,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Oa-aV-0iT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Oa-aV-0iT">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" textLabel="iBk-qT-pTK" style="IBUITableViewCellStyleDefault" id="JkE-4A-ddF">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" rowHeight="131" id="JkE-4A-ddF">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="131"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JkE-4A-ddF" id="eE2-LB-5PP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iBk-qT-pTK">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gyj-Q2-Pir">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="IQJ-jk-hBd"/>
+                                                        <constraint firstAttribute="height" constant="120" id="PBq-98-DiY"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu9-cE-VeT">
+                                                    <rect key="frame" x="277" y="60" width="73" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Gyj-Q2-Pir" firstAttribute="leading" secondItem="eE2-LB-5PP" secondAttribute="leading" id="0bb-Zb-D8w"/>
+                                                <constraint firstItem="Zu9-cE-VeT" firstAttribute="centerY" secondItem="eE2-LB-5PP" secondAttribute="centerY" id="MpS-wV-a33"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gyj-Q2-Pir" secondAttribute="bottom" id="Q05-rw-dGJ"/>
+                                                <constraint firstItem="Gyj-Q2-Pir" firstAttribute="top" secondItem="eE2-LB-5PP" secondAttribute="top" id="WkG-rk-yW9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zu9-cE-VeT" secondAttribute="trailing" constant="10" id="ecF-a3-wgD"/>
+                                                <constraint firstItem="Zu9-cE-VeT" firstAttribute="leading" secondItem="Gyj-Q2-Pir" secondAttribute="trailing" constant="157" id="mAJ-3i-dna"/>
+                                                <constraint firstItem="Gyj-Q2-Pir" firstAttribute="centerY" secondItem="eE2-LB-5PP" secondAttribute="centerY" id="uI7-8Z-xxN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -105,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcc-Hm-1u5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="-871"/>
+            <point key="canvasLocation" x="840.79999999999995" y="-871.21439280359823"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tuP-eE-rHz">
@@ -147,17 +162,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-gQ-Tbm">
-                                            <rect key="frame" x="-66" y="-37" width="247.5" height="132"/>
+                                            <rect key="frame" x="15.5" y="0.0" width="85" height="85"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="f4O-gQ-Tbm" secondAttribute="height" multiplier="15:8" id="Pmj-8E-F1j"/>
+                                                <constraint firstAttribute="width" secondItem="f4O-gQ-Tbm" secondAttribute="height" multiplier="1:1" id="Pmj-8E-F1j"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="leading" secondItem="dAc-cr-DA7" secondAttribute="leadingMargin" constant="-74" id="RI4-fI-cKd"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="f4O-gQ-Tbm" secondAttribute="bottom" constant="-18" id="pi6-ZO-Xo3"/>
-                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="top" secondItem="dAc-cr-DA7" secondAttribute="topMargin" constant="-45" id="vez-Ph-AgK"/>
+                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="height" secondItem="dAc-cr-DA7" secondAttribute="height" id="0Ak-1v-Pqw"/>
+                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="centerX" secondItem="dAc-cr-DA7" secondAttribute="centerX" id="AzP-oR-Hqe"/>
+                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="width" relation="lessThanOrEqual" secondItem="dAc-cr-DA7" secondAttribute="width" id="VBd-Ji-xYn"/>
+                                    <constraint firstItem="f4O-gQ-Tbm" firstAttribute="centerY" secondItem="dAc-cr-DA7" secondAttribute="centerY" id="oG0-o1-ATQ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="memeImageView" destination="f4O-gQ-Tbm" id="wnp-sv-Xad"/>
@@ -298,16 +314,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXJ-35-btM" userLabel="Meme Image View">
-                                <rect key="frame" x="0.0" y="19.5" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MemeGenerator_120 copy" translatesAutoresizingMaskIntoConstraints="NO" id="oXJ-35-btM" userLabel="Meme Image View">
+                                <rect key="frame" x="127.5" y="283" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oXJ-35-btM" secondAttribute="height" multiplier="1:1" id="Gfg-Ns-nCt"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oXJ-35-btM" firstAttribute="width" secondItem="pcw-kk-q4l" secondAttribute="width" id="1G2-hE-hMq"/>
+                            <constraint firstItem="oXJ-35-btM" firstAttribute="width" relation="lessThanOrEqual" secondItem="pcw-kk-q4l" secondAttribute="width" id="1G2-hE-hMq"/>
                             <constraint firstItem="oXJ-35-btM" firstAttribute="centerY" secondItem="pcw-kk-q4l" secondAttribute="centerY" id="20L-uu-Peq"/>
                             <constraint firstItem="oXJ-35-btM" firstAttribute="centerX" secondItem="pcw-kk-q4l" secondAttribute="centerX" id="RVI-Qe-MRF"/>
-                            <constraint firstItem="oXJ-35-btM" firstAttribute="height" secondItem="pcw-kk-q4l" secondAttribute="height" id="hQl-a5-1Uk"/>
+                            <constraint firstItem="oXJ-35-btM" firstAttribute="height" relation="lessThanOrEqual" secondItem="pcw-kk-q4l" secondAttribute="height" id="hQl-a5-1Uk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pcw-kk-q4l"/>
                     </view>
@@ -321,6 +340,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MemeGenerator_120 copy" width="120" height="120"/>
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
